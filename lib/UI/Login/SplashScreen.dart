@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tobaapp/Constant/Colors.dart';
+import 'package:tobaapp/UI/Login/LoginOption.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
 
@@ -22,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
 
+    double width = MediaQuery.of(context).size.width;
     ScreenUtil.instance = ScreenUtil(
       height: 700,
       width: MediaQuery.of(context).size.width,
@@ -85,7 +89,35 @@ class _SplashScreenState extends State<SplashScreen> {
                  shape: BoxShape.circle,
                ),
              ),
-           )
+           ),
+
+           Center(
+             child: Container(
+
+
+               margin: EdgeInsets.only(top:130),
+
+               height: 50,
+               width: width * 0.8,
+               child: RaisedButton(
+                 color: MyColors.ThemeColor2,
+                 onPressed: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) =>LoginOption()),
+                   );
+
+                 },
+                 child: Text(
+                   'تسجيل الدخول',
+                   style: TextStyle(
+                       fontWeight: FontWeight.bold, color: Colors.white),
+                 ),
+               ),
+             ),
+           ),
+
+
          ],
        )
 
