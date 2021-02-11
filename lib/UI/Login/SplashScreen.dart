@@ -36,14 +36,19 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
        body:Stack(
          children: [
+
+
+
+
            Container(
              decoration: BoxDecoration(
                image: DecorationImage(image: AssetImage(background), fit: BoxFit.cover,),
              ),
            ),
+
            Positioned(
              top: 80,
-             left: 65,
+             left: 100,
              child: Container(
                height: 210.0,
                width: 210.0,
@@ -60,23 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
            Positioned(
              top: 280,
-             left: 180,
-             child: Container(
-               height: 100.0,
-               width: 100.0,
-               decoration: BoxDecoration(
-                 image: DecorationImage(
-                   image: AssetImage(
-                       appLogo),
-                   fit: BoxFit.fill,
-                 ),
-                 shape: BoxShape.circle,
-               ),
-             ),
-           ),
-           Positioned(
-             top: 280,
-             left: 70,
+             left: 160,
              child: Container(
                height: 100.0,
                width: 100.0,
@@ -95,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
              child: Container(
 
 
-               margin: EdgeInsets.only(top:130),
+               margin: EdgeInsets.only(top:380),
 
                height: 50,
                width: width * 0.8,
@@ -107,12 +96,20 @@ class _SplashScreenState extends State<SplashScreen> {
                      MaterialPageRoute(builder: (context) =>LoginOption()),
                    );
 
+
                  },
                  child: Text(
                    'تسجيل الدخول',
                    style: TextStyle(
-                       fontWeight: FontWeight.bold, color: Colors.white),
+                       fontWeight: FontWeight.bold, color: Colors.white
+                       ,fontFamily: "SegoeUIBold", fontSize: 20),
                  ),
+                 shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(7.0),
+                     side: BorderSide(color:MyColors.ThemeColor2)
+                 ),
+
+
                ),
              ),
            ),

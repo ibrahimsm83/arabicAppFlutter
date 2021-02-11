@@ -165,9 +165,11 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'تسجيل الدخول',
+                            'المكاتب الهندسية والإستشارية',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white
+                                ,fontFamily: "SegoeUIBold", fontSize: 20
+                            ),
                           ),
                         ),
                       ),
@@ -194,9 +196,9 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'عمل جولة في التطبيق',
+                            'المهندسون والمستشارون',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
                           ),
                         ),
                       ),
@@ -224,9 +226,9 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'لمهندسون والمستشارون',
+                            'مقاولي البناء ( تسليم مفتاح )',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
                           ),
                         ),
                       ),
@@ -253,9 +255,69 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'مقاولي البناء ( تسليم مفتاح )',
+                            'مقاولي الباطن',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+
+                      Container(
+
+                        //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
+                        height: 45,
+                        width: width,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7.0),
+                              side: BorderSide(color:MyColors.ThemeColor2)
+                          ),
+                          color: MyColors.ThemeColor2,
+                          onPressed: () {
+
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>CementProduct()),
+                            );
+
+
+
+                          },
+                          child: Text(
+                            'منتجات ومواد البناء',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height:20),
+
+                      Container(
+
+                        //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
+                        height: 45,
+                        width: width,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7.0),
+                              side: BorderSide(color:MyColors.ThemeColor2)
+                          ),
+                          color: MyColors.ThemeColor2,
+                          onPressed: () {
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>VillasProduct()),
+                            );
+
+
+                          },
+                          child: Text(
+                            'المساكن الجاهزة',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
                           ),
                         ),
                       ),
@@ -284,38 +346,9 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'مقاولي الباطن',
+                            'العروض التمولية',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height:20),
-
-                      Container(
-
-                        //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                        height: 45,
-                        width: width,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7.0),
-                              side: BorderSide(color:MyColors.ThemeColor2)
-                          ),
-                          color: MyColors.ThemeColor2,
-                          onPressed: () {
-
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) =>VillasProduct()),
-                            );
-
-
-                          },
-                          child: Text(
-                            'منتجات ومواد البناء',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
                           ),
                         ),
                       ),
@@ -344,72 +377,76 @@ class  _BahasAnMaktabState extends State<BahasAnMaktab> {
 
                           },
                           child: Text(
-                            'المساكن الجاهزة',
+                            'عروض الأسعار',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white),
+                                fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
                           ),
                         ),
                       ),
                       SizedBox(height: 20),
 
-                      Row(
-                        children: [
-                          Container(
-
-                            //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                            height: 45,
-                            width: 180,
-                            child: RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                  side: BorderSide(color:MyColors.ThemeColor2)
-                              ),
-                              color: MyColors.ThemeColor2,
-                              onPressed: () {},
-                              child: Text(
-                                'العروض التمولية',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, color: Colors.white),
-                              ),
-                            ),
-                          ),
-
-                          SizedBox(width: 10),
-                          Container(
-
-                            //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                            height: 45,
-                            width: 180,
-                            child: RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                  side: BorderSide(color:MyColors.ThemeColor2)
-                              ),
-                              color: MyColors.ThemeColor2,
-                              onPressed: () {
-
-                              //   Navigator.push(
-                              //     context,
-                              // MaterialPageRoute(builder: (context) =>MenProduct()),
-                              //   );
 
 
 
-                              },
-                              child: Text(
-                                'عروض الأسعار',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, color: Colors.white),
-                              ),
-                            ),
-                          ),
-
-                        ],
-
-
-                      ),
-
-                      SizedBox(height: 30),
+                      //
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //
+                      //       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
+                      //       height: 45,
+                      //       width: 180,
+                      //       child: RaisedButton(
+                      //         shape: RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(7.0),
+                      //             side: BorderSide(color:MyColors.ThemeColor2)
+                      //         ),
+                      //         color: MyColors.ThemeColor2,
+                      //         onPressed: () {},
+                      //         child: Text(
+                      //           'العروض التمولية',
+                      //           style: TextStyle(
+                      //               fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //
+                      //     SizedBox(width: 10),
+                      //     Container(
+                      //
+                      //       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
+                      //       height: 45,
+                      //       width: 180,
+                      //       child: RaisedButton(
+                      //         shape: RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(7.0),
+                      //             side: BorderSide(color:MyColors.ThemeColor2)
+                      //         ),
+                      //         color: MyColors.ThemeColor2,
+                      //         onPressed: () {
+                      //
+                      //         //   Navigator.push(
+                      //         //     context,
+                      //         // MaterialPageRoute(builder: (context) =>MenProduct()),
+                      //         //   );
+                      //
+                      //
+                      //
+                      //         },
+                      //         child: Text(
+                      //           'عروض الأسعار',
+                      //           style: TextStyle(
+                      //               fontWeight: FontWeight.bold, color: Colors.white,fontFamily: "SegoeUIBold", fontSize: 20),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //
+                      //   ],
+                      //
+                      //
+                      // ),
+                      //
+                      // SizedBox(height: 30),
 
 
 

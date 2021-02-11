@@ -34,35 +34,37 @@ class  _TobahScreenState extends State<TobahScreen> {
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-
-        title: SearchbyTextField(),
-        actions: <Widget>[
-          //IconButton
-          //IconButton
-        ], //<Widget>[]
-        elevation: 50.0,
-        leading: IconButton(
-          icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
-            size: 30,),
-          tooltip: 'Comment Icon',
-          onPressed: () {
-
-
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MarkazMusayda()));
-
-
-          },
-        ), //IconButton
-        brightness: Brightness.dark,
-
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //
+      //   title: SearchbyTextField(),
+      //   actions: <Widget>[
+      //     //IconButton
+      //     //IconButton
+      //   ], //<Widget>[]
+      //   elevation: 50.0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
+      //       size: 30,),
+      //     tooltip: 'Comment Icon',
+      //     onPressed: () {
+      //
+      //
+      //       Navigator.push(context,
+      //           MaterialPageRoute(builder: (context) => MarkazMusayda()));
+      //
+      //
+      //     },
+      //   ), //IconButton
+      //   brightness: Brightness.dark,
+      //
+      // ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Container(
           //height: 70.0,
+
+
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -104,8 +106,82 @@ class  _TobahScreenState extends State<TobahScreen> {
      // bottomNavigationBar: BottomNavigationBarClass(),
       body:SingleChildScrollView(child:  Stack(
         children: [
-          Column(children:[Container(
-            margin: EdgeInsets.only(left: 150, top: 30),
+          Container(
+
+            margin:EdgeInsets.only(right:30, top:30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // IconButton(
+                //   onPressed: () {},
+                //   //icon: Icon(Icons.message, size: 24.0),
+                // ),
+                Image.asset(
+                  'assets/Group15.png',
+                  height: 60,
+                  width: 80,
+                ),
+
+
+
+              ],
+            ),
+          ),
+          Container(
+
+            margin:EdgeInsets.only(left:30, top:30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // IconButton(
+                //   onPressed: () {},
+                //   //icon: Icon(Icons.message, size: 24.0),
+                // ),
+                 IconButton(
+                  icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
+                    size: 30,),
+                  tooltip: 'Comment Icon',
+                  onPressed: () {
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MarkazMusayda()));
+
+
+                  },
+                ), //IconB
+
+              ],
+            ),
+          ),
+
+
+
+          Container(
+
+            margin:EdgeInsets.only(right:30, top:30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // IconButton(
+                //   onPressed: () {},
+                //   //icon: Icon(Icons.message, size: 24.0),
+                // ),
+                Image.asset(
+                  'assets/Group15.png',
+                  height: 60,
+                  width: 80,
+                ),
+              ],
+            ),
+          ),
+
+
+
+          Column(
+
+
+            children:[Container(
+            margin: EdgeInsets.only(left: 150, top: 70),
 
             height: 100,
             width: 120,
@@ -124,11 +200,12 @@ class  _TobahScreenState extends State<TobahScreen> {
               Container(
                 margin: EdgeInsets.only(left: 20, right: 20, top: 280),
 
+
                 child: Column(
                   children: [
 
                     Container(
-                      height: 45,
+                      height: 50,
                       width: width,
                       // decoration: BoxDecoration(
                       //     border: Border.all(
@@ -151,7 +228,8 @@ class  _TobahScreenState extends State<TobahScreen> {
                         child: Text(
                           'الملف الشخصي',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                              fontWeight: FontWeight.bold, fontFamily: "SegoeUIBold", color: Colors.white
+                          ,fontSize: 20),
                         ),
                       ),
                     ),
@@ -160,7 +238,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                     Container(
 
                       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                      height: 45,
+                      height: 50,
                       width: width,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
@@ -181,7 +259,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                         child: Text(
                           'المدفوعات',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                              fontWeight: FontWeight.bold,fontFamily: "SegoeUIBold", color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),
@@ -190,7 +268,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                     Container(
 
                       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                      height: 45,
+                      height: 50,
                       width: width,
 
                       child: RaisedButton(
@@ -203,7 +281,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                         child: Text(
                           'بيانات البطاقة',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                              fontWeight: FontWeight.bold,fontFamily: "SegoeUIBold", color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),
@@ -212,7 +290,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                     Container(
 
                       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                      height: 45,
+                      height: 50,
                       width: width,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
@@ -224,7 +302,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                         child: Text(
                           'العروض الخاصة',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                              fontWeight: FontWeight.bold,fontFamily: "SegoeUIBold", color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),
@@ -233,7 +311,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                     Container(
 
                       //       margin: EdgeInsets.only(left: 20, right: 20, top: 30cxdc0),
-                      height: 45,
+                      height: 50,
                       width: width,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
@@ -245,7 +323,7 @@ class  _TobahScreenState extends State<TobahScreen> {
                         child: Text(
                           'العروض الخاصة',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
+                              fontWeight: FontWeight.bold,fontFamily: "SegoeUIBold", color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),

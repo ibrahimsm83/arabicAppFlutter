@@ -18,6 +18,7 @@ class SearchbyTextField extends StatelessWidget {
         hintStyle: TextStyle(
           color: Colors.grey.shade400,
           fontWeight: FontWeight.bold,
+          fontFamily: "SegoeUIBold"
         ),
         suffixIcon: Icon(
           Icons.search,

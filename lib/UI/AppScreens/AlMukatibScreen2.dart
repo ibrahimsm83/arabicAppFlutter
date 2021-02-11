@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tobaapp/Constant/Colors.dart';
+import 'package:tobaapp/Products/TobaAppCement.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
+import 'package:tobaapp/UI/AppScreens/screen21.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
 import '../../Constant/Images.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:tobaapp/Widgets/AppBarWidget.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
+
+import 'Screen20.dart';
 
 
 class AlMukatibScreen2 extends StatefulWidget {
@@ -127,8 +131,42 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
               // ),
 
               //  SizedBox(width: 10),
-              Image.asset('assets/group11.png'),
+              Container(
 
+                margin: EdgeInsets.only(top: 30, left: 30),
+                height: 40,
+                width: 90,
+                // decoration: BoxDecoration(
+                //     border: Border.all(
+                //       color: MyColors.ThemeColor2,
+                //     ),
+                //     borderRadius: BorderRadius.all(Radius.circular(20))
+                // ),
+                child: RaisedButton.icon(
+                  icon: Icon(Icons.wrap_text, color:Colors.white,),
+                  label:Text(
+                    'الفلتر',
+                    style: TextStyle(
+                        color: Colors.white,fontSize: 15,fontFamily: "SegoeUIBold"),
+                  ),
+
+                  color: MyColors.ThemeColor2,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.0),
+                      side: BorderSide(color:MyColors.ThemeColor2)
+                  ),
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) =>//obahScreen()
+                    //  ),
+                    // );
+
+
+                  },
+
+                ),
+              ),
               /* Container(
 
                 margin: EdgeInsets.only(top: 30, left: 30),
@@ -155,10 +193,11 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                   margin: EdgeInsets.only(top: 30, right: 30),
                   //height: height,
                   //width: width,
-                  child:  Text('المكاتب الهندسية والإستشارية', style: new TextStyle(
+
+                  child:  Text('المهندسون والمستشارون', style: new TextStyle(
                       fontSize: 18.0,
                       color:Colors.black, fontWeight: FontWeight.bold
-
+                      , fontFamily: "SegoeUIRegular"
 
                   ),
                   )
@@ -188,7 +227,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
               // ),
               Container(
                   margin: EdgeInsets.only(top: 30, bottom: 30),
-                  width: 350,
+                  width: 380,
 
 
 
@@ -240,7 +279,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                         ),
 
                         Expanded(
-                          flex: 6,
+                          flex: 7,
                           child:
                           Container(
 
@@ -249,7 +288,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                             child: Column(
                               children: [
 
-                                Text('مكتب لنا للإستشارات الهندسية', style:TextStyle(fontSize:18,color:Colors.black, fontWeight: FontWeight.bold) ,),
+                                Text('مكتب لنا للإستشارات الهندسية', style:TextStyle(fontSize:18,color:Colors.black, fontWeight: FontWeight.bold),textAlign: TextAlign.right ,),
                                 SizedBox(height:10,),
                                 Container(child: Text(
                                   'استشارات - تصميم - إعتمادات - تنفيذ وإشراف', maxLines: 5,style: TextStyle(fontSize: 12,color:Colors.black, fontWeight: FontWeight.bold),textAlign: TextAlign.right,
@@ -258,18 +297,21 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                                 SizedBox(height:10,),
                                 SmoothStarRating(
                                     allowHalfRating: false,
-                                    onRated: (v) {
+                                    rating: rate,
+                                    onRated: (value) {
+                                      print(rate);
+                                      // setState(() {
+                                      //   rate=value;
+                                      //
+                                      // });
                                     },
                                     starCount: 5,
-                                    rating: 0,
-                                    size: 30.0,
-                                    isReadOnly:true,
-                                    filledIconData: Icons.blur_off,
-                                    halfFilledIconData: Icons.blur_on,
-                                    color: Colors.green,
-                                    borderColor: Colors.green,
-                                    spacing:0.0
-                                ),
+                                    size: 25.0,
+                                    isReadOnly: false,
+                                    filledIconData: Icons.star,
+                                    color: Colors.black,
+                                    borderColor: Colors.black,
+                                    spacing: 0.0),
                                 SizedBox(height:10,),
                                 Container(child: Text('مشاريع من تنفيذنا', maxLines: 5,style: TextStyle(fontSize: 14,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold),
 
@@ -310,7 +352,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           margin: EdgeInsets.only(right:1),
                           width: 300, // contains width and heigh,
                           height: 40,
-                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20, color:MyColors.ThemeColor2, fontWeight: FontWeight.bold),),
+                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20, color:MyColors.ThemeColor2, fontWeight: FontWeight.bold, fontFamily:"CairoBold"),),
                           //  color: Colors.green,
 
 
@@ -367,7 +409,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           margin: EdgeInsets.only(right:1),
                           width: 300, // contains width and heigh,
                           height: 40,
-                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold),),
+                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold, fontFamily: "CairoBold"),),
                           //  color: Colors.green,
 
 
@@ -416,7 +458,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           margin: EdgeInsets.only(right:1),
                           width: 300, // contains width and heigh,
                           height: 40,
-                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold),),
+                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold, fontFamily: "CairoBold"),),
                           //  color: Colors.green,
 
 
@@ -466,7 +508,7 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           margin: EdgeInsets.only(right:1),
                           width: 300, // contains width and heigh,
                           height: 40,
-                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold),),
+                          child: Text('مثال  للنموذج', textAlign: TextAlign.right,style: TextStyle(fontSize: 20,color:MyColors.ThemeColor2, fontWeight: FontWeight.bold, fontFamily: "CairoBold"),),
                           //  color: Colors.green,
 
 
@@ -522,29 +564,42 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           children: [
                             Container(
                               height: 40,
-                              width: 100,
+                              width: 120,
                               margin: EdgeInsets.fromLTRB(60, 0, 0, 20),
                               child: RaisedButton(
                                 child: Text(
                                   'تقديم الطلب',
-                                  style: TextStyle(color: Colors.white, fontSize: 15),
+                                  style: TextStyle(color: Colors.white, fontSize: 17, fontFamily: "SegoeUIRegular"),
                                 ),
                                 color: MyColors.ThemeColor2,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7.0),
                                     side: BorderSide(color: MyColors.ThemeColor2)),
-                                onPressed: () {},
+                                onPressed: () {
+
+
+
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) =>ScreenNo21()),
+                                  );
+
+
+
+
+                                },
                               ),
                             ),
                             //    SizedBox(width: 13,),
                             Container(
                               height: 40,
-                              width: 100,
-                              margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                              width: 120,
+                              margin: EdgeInsets.fromLTRB(10, 0, 20, 20),
                               child: RaisedButton(
                                 child: Text(
                                   'رجوع ',
-                                  style: TextStyle(color: Colors.white, fontSize: 15),
+                                  style: TextStyle(color: Colors.white, fontSize: 17, fontFamily: "SegoeUIRegular"),
                                 ),
                                 color: MyColors.ThemeColor2,
                                 shape: RoundedRectangleBorder(
@@ -557,7 +612,6 @@ class  _AlMukatibScreen2State extends State<AlMukatibScreen2> {
                           ],),
 
                         SizedBox(height:15),
-
 
 
                         //  SizedBox(width: 13,),

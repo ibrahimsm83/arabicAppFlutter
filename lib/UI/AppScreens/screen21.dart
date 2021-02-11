@@ -1,4 +1,6 @@
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:tobaapp/Constant/Colors.dart';
+import 'package:tobaapp/Products/TobaAppCement.dart';
 import 'package:tobaapp/Products/VillasProduct.dart';
 import 'package:tobaapp/UI/AppScreens/screen22.dart';
 
@@ -9,9 +11,11 @@ import 'MarkazMusayda.dart';
 
 class ScreenNo21 extends StatelessWidget {
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
+    final r1 = 100000;
+    final r2 = 15000;
+    final r3 = 115000;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -23,20 +27,18 @@ class ScreenNo21 extends StatelessWidget {
         ], //<Widget>[]
         elevation: 50.0,
         leading: IconButton(
-          icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
-            size: 30,),
+          icon: Icon(
+            Icons.comment,
+            color: MyColors.ThemeColor2,
+            size: 30,
+          ),
           tooltip: 'Comment Icon',
           onPressed: () {
-
-
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => MarkazMusayda()));
-
-
           },
         ), //IconButton
         brightness: Brightness.dark,
-
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -57,9 +59,7 @@ class ScreenNo21 extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 icon: Icon(Icons.person, size: 36.0),
               ),
               IconButton(
@@ -67,9 +67,7 @@ class ScreenNo21 extends StatelessWidget {
                 icon: Icon(Icons.book, size: 36.0),
               ),
               IconButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 icon: Icon(Icons.favorite, size: 36.0),
               ),
               IconButton(
@@ -80,74 +78,97 @@ class ScreenNo21 extends StatelessWidget {
           ),
         ),
       ),
-     // bottomNavigationBar: BottomNavigationBarClass(),
+      // bottomNavigationBar: BottomNavigationBarClass(),
       body: ListView(
         children: [
           Container(
-            //color: Colors.grey[500],
+            margin: EdgeInsets.only(left: 30.0,top: 30.0,right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/Group11.png'),
-                Text(
-                  "المهندسون والمستشارون",
-                  style: TextStyle(color: Colors.black, fontSize: 22.0),
-                ),
+                Image.asset('assets/group11.png'),
+                 Text(
+                    "المهندسون والمستشارون",
+                    style: TextStyle(color: Colors.black, fontSize: 22.0,fontFamily: "SegoeUIRegular"),
+                  ),
+
               ],
             ),
           ),
           //pic column
           Container(
-            //width: MediaQuery.of(context).size.width * 7.0,
-            //color: Colors.white,
+            margin: EdgeInsets.all(15),
+            // width: MediaQuery.of(context).size.width * 7.0,
+            //color: Colors.blue,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black)),
+
             child: Column(
               children: [
                 Row(
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          bottom: height * 0.1, left: width * 0.02),
-                      child: Image.asset('assets/Group13.png',
+                          bottom: height * 0.1, left: width * 0.01),
+                      child: Image.asset('assets/Group16.png',
                           width: 100, height: 100, fit: BoxFit.fill),
                     ),
                     Container(
-                      // color: Colors.blue,
-                      padding: EdgeInsets.only(
-                          left: width * 0.1, right: width * 0.01),
+                      //color: Colors.red,
+                      width: width * 0.6,
+                      padding: EdgeInsets.all(0.4),
+                      // padding: EdgeInsets.only(
+                      //     left: width * 0.01, right: width * 0.01),
                       child: Column(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "المكاتب الهندسية والإستشارية",
+                            "المستشار علي ال مطير",
+                            //"المكاتب الهندسية والإستشارية",
                             style:
-                                TextStyle(color: Colors.black, fontSize: 18.0),
+                                TextStyle(color: Colors.black, fontSize: 18.0,),
                           ),
                           //text2
                           Text(
-                            "استشارات - تصميم - إعتمادات - تنفيذ وإشراف",
+                            "استشارات - تصميم-إعتمادات - تنفيذ وإشراف",
                             style:
                                 TextStyle(color: Colors.black, fontSize: 14.0),
                           ),
                           //Rating widget
                           Row(
-                            //mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             //mainAxisSize: MainAxisSize.max,
                             //crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
-                              Icon(Icons.star_sharp),
-                              Icon(Icons.star_sharp),
-                              Icon(Icons.star_sharp),
-                              Icon(Icons.star_sharp),
-                              Icon(Icons.star_sharp),
+                              SmoothStarRating(
+                                allowHalfRating: false,
+                                rating: rate,
+                                onRated: (value) {
+                                  print(rate);
+                                  // setState(() {
+                                  //   rate=value;
+                                  //
+                                  // });
+                                },
+                                starCount: 5,
+                                size: 25.0,
+                                isReadOnly: false,
+                                filledIconData: Icons.star,
+                                color: Colors.black,
+                                borderColor: Colors.black,
+                                spacing: 0.0),
                             ],
                           ),
                           //Rating text below code
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "مشاريع من تنفيذنا",
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 14.0),
+                                    color: MyColors.ThemeColor2,
+                                    fontSize: 14.0),
                               ),
                               Container(
                                 margin: EdgeInsets.all(10.0),
@@ -159,7 +180,8 @@ class ScreenNo21 extends StatelessWidget {
                               Text(
                                 "طلب عرض سعر",
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 14.0),
+                                    color: MyColors.ThemeColor2,
+                                    fontSize: 14.0),
                               ),
                             ],
                           ),
@@ -167,12 +189,12 @@ class ScreenNo21 extends StatelessWidget {
                             height: 30,
                           ),
                           //textinput filed
-                          Padding(
-                            padding: const EdgeInsets.only(left: 100),
-                            child: Text(
-                              "الطلب المرسل",
-                            ),
-                          ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child:
+                           Text("الطلب المرسل",
+                                style: TextStyle(color: MyColors.ThemeColor2)),
+                      ),
                           SizedBox(
                             height: 10,
                           ),
@@ -189,9 +211,26 @@ class ScreenNo21 extends StatelessWidget {
                   child: TextField(
                     maxLines: 8,
                     decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColors.ThemeColor2,
+                        ),
+                      ),
                       border: OutlineInputBorder(),
                       // labelText: 'Password',
+                      //
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: MyColors.ThemeColor2,
+                          width: 1.5,
+                        ),
+                      ),
+                      //
                     ),
+                    //color
+
+                    //color
                   ),
                 ),
                 //iput1
@@ -200,14 +239,30 @@ class ScreenNo21 extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text("الإجمالي"),
+                        Text("الإجمالي",
+                            style: TextStyle(color: MyColors.ThemeColor2)),
                         Container(
                           width: 100.0,
                           child: TextField(
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
+                              //border color
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                  width: 1.5,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                ),
+                              ),
                               border: OutlineInputBorder(),
                               labelText: 'ريال115000',
+                              labelStyle:
+                                  TextStyle(color: MyColors.ThemeColor2),
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                             ),
@@ -218,15 +273,30 @@ class ScreenNo21 extends StatelessWidget {
                     //input2
                     Column(
                       children: [
-                        Text("VAT"),
+                        Text("VAT",
+                            style: TextStyle(color: MyColors.ThemeColor2)),
                         Container(
                           width: 100.0,
                           padding: EdgeInsets.only(top: 5.0),
                           child: TextField(
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                  width: 1.5,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                ),
+                              ),
                               border: OutlineInputBorder(),
-                              labelText: 'ريال115000',
+                              labelText: 'ريال$r2',
+                              labelStyle:
+                                  TextStyle(color: MyColors.ThemeColor2),
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                             ),
@@ -237,14 +307,37 @@ class ScreenNo21 extends StatelessWidget {
                     //input 3
                     Column(
                       children: [
-                        Text("قيمة العرض"),
+                        Text(
+                          "قيمة العرض",
+                          style: TextStyle(color: MyColors.ThemeColor2),
+                        ),
                         Container(
                           width: 100.0,
                           child: TextField(
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'ريال115000',
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                  width: 1.5,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: MyColors.ThemeColor2,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: MyColors.ThemeColor2, width: 1.0),
+                              ),
+                              //filled: true,
+                              labelText: 'ريال$r1',
+                              labelStyle: TextStyle(
+                                color: MyColors.ThemeColor2,
+                              ),
+                              //labelText: '$r1',
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                             ),
@@ -268,11 +361,16 @@ class ScreenNo21 extends StatelessWidget {
                     children: [
                       Text(
                         "قبولكم لهذا العرض يعني موافقتكم على الشروط والأحكام لتطبيق طوبة طوبة",
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 11.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 10.0,
                       ),
                       Text(
                         "اضغط هنا للإطلاع على الشروط والأحكام الخاصة بالتطبيق",
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 11.0),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
@@ -287,8 +385,8 @@ class ScreenNo21 extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       ButtonTheme(
-                        minWidth: 250.0,
-                        height: 48.0,
+                        minWidth: width * 0.8,
+                        height: 55.0,
                         child: RaisedButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
@@ -326,7 +424,7 @@ class ScreenNo21 extends StatelessWidget {
                         children: <Widget>[
                           ButtonTheme(
                             minWidth: 150.0,
-                            height: 48.0,
+                            height: 55.0,
                             child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -341,7 +439,7 @@ class ScreenNo21 extends StatelessWidget {
                               splashColor: Colors.red,
                               color: MyColors.ThemeColor2,
                               padding: const EdgeInsets.all(8.0),
-                              child: Text('قبول العرض',
+                              child: Text('رفض العرض',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -359,7 +457,7 @@ class ScreenNo21 extends StatelessWidget {
                         children: <Widget>[
                           ButtonTheme(
                             minWidth: 150.0,
-                            height: 48.0,
+                            height: 55.0,
                             child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -374,7 +472,7 @@ class ScreenNo21 extends StatelessWidget {
                               splashColor: Colors.red,
                               color: MyColors.ThemeColor2,
                               padding: const EdgeInsets.all(8.0),
-                              child: Text('قبول العرض',
+                              child: Text('رفض العرض',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -392,6 +490,7 @@ class ScreenNo21 extends StatelessWidget {
                 ),
               ],
             ),
+            // decoration: BoxDecoration(border: Border.all()),
           ),
         ],
       ),

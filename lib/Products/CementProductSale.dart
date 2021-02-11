@@ -1,20 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tobaapp/Constant/Colors.dart';
 import 'package:tobaapp/Constant/ExtraSpace.dart';
 import 'package:tobaapp/Constant/Images1.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
+import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
+import 'package:tobaapp/UI/AppScreens/screen24.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-import 'package:tobaapp/Constant/Colors1.dart';
 
-class TobaAppCement extends StatefulWidget {
+import 'CementProduct.dart';
+
+
+
+class CementProductSale extends StatefulWidget {
   @override
-  _TobaAppCementState createState() => _TobaAppCementState();
+  _CementProductSaleState createState() => _CementProductSaleState();
 }
 
-class _TobaAppCementState extends State<TobaAppCement> {
+class _CementProductSaleState extends State<CementProductSale> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,11 +32,28 @@ class _TobaAppCementState extends State<TobaAppCement> {
     )..init(context);
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
+      appBar: AppBar(
+        title: SearchbyTextField(hintText: 'بحث عن مكتب إستشارات هندسية',),
+        actions: <Widget>[
+          //IconButton
+          //IconButton
+        ], //<Widget>[]
+        backgroundColor: Colors.white,
+        elevation: 50.0,
+        leading: IconButton(
+          icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
+            size: 30,),
+          tooltip: 'Comment Icon',
+          onPressed: () {
 
-      // Icon(Icons.comment,color: MyColors.ThemeColor2,
-      //             size: 30,),
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MarkazMusayda()));
 
-      //bottomNavigationBar: BottomNavigationBarClass(),
+
+          },
+        ), //IconButton
+        brightness: Brightness.dark,
+      ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Container(
@@ -46,7 +69,7 @@ class _TobaAppCementState extends State<TobaAppCement> {
                 icon: Icon(
                   Icons.image,
                   size: 36.0,
-                  color: Color(0xFF12bbae),
+                  color: MyColors.ThemeColor2,
                 ),
               ),
               IconButton(
@@ -73,58 +96,72 @@ class _TobaAppCementState extends State<TobaAppCement> {
           ),
         ),
       ),
+      //bottomNavigationBar: BottomNavigationBarClass(),
+
+
 
 
       body: ListView(
         children: [
-          ExtraSpace(height: 10,),
+          ExtraSpace(height: 12,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                child: Icon(Icons.message,color:MyColors.ThemeColor2,
-
-                  //child: Icon(Icons.message,color: MyColors.ThemeColor4,
-                  size: 30,),
-              ),
-
-              ExtraSpace(
-                width: 90,
-              ),
-              Container(
                 height: 40,
-                width: 90,
-                // decoration: BoxDecoration(
-                //     border: Border.all(
-                //       color: MyColors.ThemeColor2,
-                //     ),
-                //     borderRadius: BorderRadius.all(Radius.circular(20))
-                // ),
-                child: RaisedButton(
-                  child: Text(
-                    'عودةللخلف',
-                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold),
+                width: 100,
+                child: RaisedButton.icon(
+                  icon: Icon(
+                    Icons.wrap_text,
+                    color: Colors.white,
+                  ),
+                  label: Text(
+                    'الفلتر',
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
                   color: MyColors.ThemeColor2,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7.0),
-                      side: BorderSide(color:MyColors.ThemeColor2)),
-                  onPressed: () {},
+                      side: BorderSide(color: MyColors.ThemeColor2)),
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) =>//obahScreen()
+                    //  ),
+                    // );
+                  },
+                ),
+              ),
+              ExtraSpace(
+                width: 10,
+              ),
+              Container(
+                child: Text('منتجات ومواد البناء',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17, fontFamily: "SegoeUIBold")
+                  //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),
             ],
           ),
-          Center(
-              child: Text('سلة الشراء',
-                style: TextStyle(fontSize: 35,fontFamily: 'CairoRegular'),
-              )
+          ExtraSpace(
+            height: 30,
           ),
-
+          Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ButtonsForTop(Texting: 'المواسير',),
+                  ButtonsForTop(Texting: 'الإسمنت',),
+                  ButtonsForTop(Texting: 'الخرسان',),
+                  ButtonsForTop(Texting: 'البلك',),
+                ],
+              )),
           ExtraSpace(
             height: 20,
           ),
-
-
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -134,67 +171,74 @@ class _TobaAppCementState extends State<TobaAppCement> {
               return ProductItems();
             },
           ),
-          Center(
-            child: Container(
-              height: 45,
-              width: 350,
+          SizedBox(height: 20.0,),
+          //apple button
+          Container(
+            height:height*0.08,
+            margin: EdgeInsets.all(10.0),
+            //height: MediaQuery.of(context).size.height/16,
+            width: MediaQuery.of(context).size.width,
+        //     color: Colors.white,
+          //  color:Colors.white,
+      //      child:Text('255      ريال'),
 
-              child: RaisedButton(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7.0),
-                    side: BorderSide(color:MyColors.ThemeColor2)
+            decoration: BoxDecoration(
+                color:Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color:  MyColors.ThemeColor2),
+//                image: DecorationImage(image: AssetImage('assets/apple.png',),
                 ),
-                onPressed: () {
-
-                },
-                child: Text(
-                  '255 ريال',
-                  style: TextStyle(
-                      fontWeight: FontWeight.normal, color: MyColors.ThemeColor2,fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
+            child: FlatButton(
+              child: Text(
+                "255      ريال",
+                style:TextStyle(color: MyColors.ThemeColor2,fontSize: 18),
               ),
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(
+                //     builder: (context)=> ScreenNo24()));
+              },
+            ),
+            ),
+          SizedBox(height: 2.0,),
+          Container(
+            height:height*0.08,
+            margin: EdgeInsets.all(10.0),
+            //height: MediaQuery.of(context).size.height/16,
+            width: MediaQuery.of(context).size.width,
+         //   child:Text('255الإستمرار   للدفع'),
+            decoration: BoxDecoration(
+                color:MyColors.ThemeColor2,
+
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyColors.ThemeColor2),
+              //
+              //  image: DecorationImage(image: AssetImage('assets/apple.png',))
+            ),
+
+            child: FlatButton(
+              child:Text('الإستمرار   للدفع',style:TextStyle(color: Colors.white, fontSize: 18)),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context)=> ScreenNo24()));
+              },
             ),
           ),
-          ExtraSpace(height: 20,),
-          Center(
-            child: Container(
-              height: 45,
-              width: 350,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7.0),
-                  side: BorderSide(color:MyColors.ThemeColor2),
-                ),
-                color: MyColors.ThemeColor2,
-                onPressed: () {
-
-                },
-                child: Text(
-                  'الإستمرار لدفع',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-          ExtraSpace(height: 20,),
 
         ],
       ),
     );
   }
 }
+
 class ProductItems extends StatefulWidget {
   @override
   _ProductItemsState createState() => _ProductItemsState();
 }
-var rate = 3.0;
 
 class _ProductItemsState extends State<ProductItems> {
   @override
+  var rate = 3.0;
+
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
@@ -209,25 +253,10 @@ class _ProductItemsState extends State<ProductItems> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Stack(
-              children: [
-                Image.asset(
-                  cementtoba,
-                  fit: BoxFit.fill,
-                  height: 196,
-                ),
-                Positioned(
-                  top: 50,
-                  left: 10,
-
-                  child: Center(
-                    child: Image.asset(
-                      cementlogo,
-                      height: 60,
-                    ),
-                  ),
-                ),
-              ],
+            child: Image.asset(
+              cement,
+              fit: BoxFit.fill,
+              height: 205,
             ),
             flex: 4,
           ),
@@ -240,7 +269,7 @@ class _ProductItemsState extends State<ProductItems> {
                     Column(
                       children: [
                         ExtraSpace(
-                          height: 2,
+                          height: 6,
                         ),
                         Text(
                           'شركة اسمنت حائل',
@@ -251,7 +280,7 @@ class _ProductItemsState extends State<ProductItems> {
                           textAlign: TextAlign.right,
                         ),
                         ExtraSpace(
-                          height: 1,
+                          height: 4,
                         ),
                         Text(
                           'اسمنت مقاوم ثقيل',
@@ -283,14 +312,14 @@ class _ProductItemsState extends State<ProductItems> {
                     borderColor: Colors.black,
                     spacing: 0.0),
                 ExtraSpace(
-                  height: 5,
+                  height: 12,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       'السعر: 18 ريال',
-                      style: TextStyle(color:MyColors.ThemeColor2, fontSize: 15),
+                      style: TextStyle(color: Color(0xff12BBAE), fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                     Container(
@@ -300,7 +329,7 @@ class _ProductItemsState extends State<ProductItems> {
                     ),
                     Text(
                       'طلب عرض سعر',
-                      style: TextStyle(color: MyColors.ThemeColor2, fontSize: 15),
+                      style: TextStyle(color: Color(0xff12BBAE), fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -318,7 +347,30 @@ class _ProductItemsState extends State<ProductItems> {
   }
 }
 
+class ButtonsForTop extends StatelessWidget {
+  @override
+  String Texting;
+  ButtonsForTop({this.Texting});
 
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30,
+      width: 70,
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      child: RaisedButton(
+        child: Text(
+          this.Texting,
+          style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
+        ),
+        color: MyColors.ThemeColor2,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(7.0),
+            side: BorderSide(color: MyColors.ThemeColor2)),
+        onPressed: () {},
+      ),
+    );
+  }
+}
 
 class Quantity extends StatefulWidget {
   @override

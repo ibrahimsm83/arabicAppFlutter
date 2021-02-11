@@ -30,7 +30,7 @@ class _BanksState extends State<Banks> {
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
       appBar: AppBar(
-        title: SearchbyTextField(),
+        title: SearchbyTextField(hintText: 'بحث عن مكتب إستشارات هندسية',),
         actions: <Widget>[
           //IconButton
           //IconButton
@@ -69,7 +69,7 @@ class _BanksState extends State<Banks> {
                   label:Text(
                     'الفلتر',
                     style: TextStyle(
-                        color: Colors.white,fontSize: 15),
+                        color: Colors.white,fontSize: 15,fontFamily: "SegoeUIRegular"),
                   ),
 
                   color: MyColors.ThemeColor2,
@@ -93,7 +93,7 @@ class _BanksState extends State<Banks> {
               Container(
 
                 child: Text('العروض التمويلية',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17)
+                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "SegoeUIRegular")
                   //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),

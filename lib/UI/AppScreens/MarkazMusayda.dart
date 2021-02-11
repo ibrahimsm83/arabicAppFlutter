@@ -31,28 +31,30 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
 
-        title: SearchbyTextField(),
-        actions: <Widget>[
-          //IconButton
-          //IconButton
-        ], //<Widget>[]
-        elevation: 50.0,
-        leading: IconButton(
-          icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
-            size: 30,),
-          tooltip: 'Comment Icon',
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MarkazMusayda()));
-
-          },
-        ), //IconButton
-        brightness: Brightness.dark,
-
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //
+      //   title: SearchbyTextField(),
+      //   actions: <Widget>[
+      //     //IconButton
+      //     //IconButton
+      //   ], //<Widget>[]
+      //   elevation: 50.0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
+      //       size: 30,),
+      //     tooltip: 'Comment Icon',
+      //     onPressed: () {
+      //       Navigator.push(context,
+      //           MaterialPageRoute(builder: (context) => MarkazMusayda()));
+      //
+      //     },
+      //   ), //IconButton
+      //   brightness: Brightness.dark,
+      //
+      // ),
 
       // bottomNavigationBar: BottomNavigationBarClass(),
       bottomNavigationBar: BottomAppBar(
@@ -108,8 +110,60 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
       ),
       body:SingleChildScrollView(child:  Stack(
         children: [
-          Column(children:[Container(
-            margin: EdgeInsets.only(left: 140, top: 30),
+          Container(
+
+            margin:EdgeInsets.only(right:30, top:30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // IconButton(
+                //   onPressed: () {},
+                //   //icon: Icon(Icons.message, size: 24.0),
+                // ),
+                Image.asset(
+                  'assets/Group15.png',
+                  height: 60,
+                  width: 80,
+                ),
+
+
+
+              ],
+            ),
+          ),
+          Container(
+
+            margin:EdgeInsets.only(left:30, top:30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // IconButton(
+                //   onPressed: () {},
+                //   //icon: Icon(Icons.message, size: 24.0),
+                // ),
+                IconButton(
+                  icon: Icon(Icons.comment,color: MyColors.ThemeColor2,
+                    size: 30,),
+                  tooltip: 'Comment Icon',
+                  onPressed: () {
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MarkazMusayda()));
+
+
+                  },
+                ), //IconB
+
+              ],
+            ),
+          ),
+
+
+
+          Column(children:[
+
+            Container(
+            margin: EdgeInsets.only(left: 140, top: 90),
 
             height: 100,
             width: 120,
@@ -137,6 +191,8 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                       height: 30,
                       width: width,
                       child: Text('مرحبا بكم في طوبة كيف يمكننا المساعدة', textAlign: TextAlign.right,
+                        style: TextStyle(fontFamily:"SegoeUIBold", color:Colors.blueAccent, fontWeight:FontWeight.bold),
+
                       ),
                     ),
                     SizedBox(height: 5),
@@ -144,16 +200,7 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                     Container(
                       height: 30,
                       width: width,
-                      child: Text('السلام عليكم ', textAlign: TextAlign.left,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-
-
-                    Container(
-                      height: 30,
-                      width: width,
-                      child: Text('وعليكم السلام ', textAlign: TextAlign.right,
+                      child: Text('السلام عليكم ', textAlign: TextAlign.left,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.black, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 5),
@@ -162,15 +209,7 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                     Container(
                       height: 30,
                       width: width,
-                      child: Text('كلمت مقاول عندكم وما رد علي وأنتم قلتم في ثلاثة أيام الرد ', textAlign: TextAlign.left,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-
-                    Container(
-                      height: 30,
-                      width: width,
-                      child: Text('لحظات لو سمحت خليني اشوف لك عروض الأسعار ', textAlign: TextAlign.right,
+                      child: Text('وعليكم السلام ', textAlign: TextAlign.right,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.blueAccent, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 5),
@@ -179,7 +218,7 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                     Container(
                       height: 30,
                       width: width,
-                      child: Text('أتفضل ', textAlign: TextAlign.right,
+                      child: Text('كلمت مقاول عندكم وما رد علي وأنتم قلتم في ثلاثة أيام الرد ', textAlign: TextAlign.left,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.black, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 5),
@@ -187,7 +226,24 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                     Container(
                       height: 30,
                       width: width,
-                      child: Text('شكر لإنتظارك العرض الان موجود ومعاه 10% خصم', textAlign: TextAlign.left,
+                      child: Text('لحظات لو سمحت خليني اشوف لك عروض الأسعار ', textAlign: TextAlign.right,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.blueAccent, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 5),
+
+
+                    Container(
+                      height: 30,
+                      width: width,
+                      child: Text('أتفضل ', textAlign: TextAlign.right,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 5),
+
+                    Container(
+                      height: 30,
+                      width: width,
+                      child: Text('شكر لإنتظارك العرض الان موجود ومعاه 10% خصم', textAlign: TextAlign.left,      style: TextStyle(fontFamily:"SegoeUIBold",color:Colors.blueAccent, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -219,7 +275,10 @@ class  _MarkazMusaydaState extends State<MarkazMusayda> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("إرسال",style:
-    TextStyle(color: Colors.blue, fontSize: 24.0,fontWeight: FontWeight.bold),),
+
+                      TextStyle(color: Colors.blue, fontSize: 24.0,fontWeight: FontWeight.bold),),
+
+                      Image.asset('assets/images/line.png'),
                       //Image.asset('assets/group11.png'),
                       Container(
 

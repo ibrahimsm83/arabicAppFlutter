@@ -6,11 +6,14 @@ import 'package:tobaapp/Constant/ExtraSpace.dart';
 import 'package:tobaapp/Constant/Images1.dart';
 import 'package:tobaapp/Products/HouseProduct.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
+import 'package:tobaapp/UI/AppScreens/AlMukatibScreen5.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
+import 'package:tobaapp/UI/AppScreens/screen23.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+
 
 class ChairProduct extends StatefulWidget {
   @override
@@ -31,7 +34,7 @@ class _ChairProductState extends State<ChairProduct> {
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
       appBar: AppBar(
-        title: SearchbyTextField(),
+        title: SearchbyTextField(hintText: 'بحث عن مكتب إستشارات هندسية',),
         actions: <Widget>[
           //IconButton
           //IconButton
@@ -109,8 +112,8 @@ class _ChairProductState extends State<ChairProduct> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                height: 40,
-                width: 90,
+                height: 45,
+                width: 100,
                 // decoration: BoxDecoration(
                 //     border: Border.all(
                 //       color: MyColors.ThemeColor2,
@@ -122,7 +125,7 @@ class _ChairProductState extends State<ChairProduct> {
                   label:Text(
                     'الفلتر',
                     style: TextStyle(
-                        color: Colors.white,fontSize: 15),
+                        color: Colors.white,fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
 
                   color: MyColors.ThemeColor2,
@@ -146,7 +149,7 @@ class _ChairProductState extends State<ChairProduct> {
               Container(
 
                 child: Text('مقاولي الباطن',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17)
+                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17, fontFamily: "SegoeUIBold")
                   //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),
@@ -175,15 +178,15 @@ class _ChairProductState extends State<ChairProduct> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>HouseProduct()
-                   ),
+                    MaterialPageRoute(builder: (context) =>ScreenNo23()
+                    ),
                   );
 
                 },
                 child: Text(
                   'طلب عرض من المقاولين',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20),
+                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20, fontFamily: "SegoeUIBold"),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -191,15 +194,21 @@ class _ChairProductState extends State<ChairProduct> {
           ),
           ExtraSpace(
             height: 20,
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: 3,
-            primary: true,
-            itemBuilder: (context, index){
-              return ProductItems();
-            },
+          ),     GestureDetector(
+            onTap:()=> Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AlMukatibScreen5(),),
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              primary: true,
+              itemBuilder: (context, index){
+                return ProductItems();
+              },
+            ),
+
           ),
         ],
       ),
@@ -207,9 +216,15 @@ class _ChairProductState extends State<ChairProduct> {
   }
 }
 
-class ProductItems extends StatelessWidget {
+class ProductItems extends StatefulWidget {
   @override
-  var rating = 0.0;
+  _ProductItemsState createState() => _ProductItemsState();
+}
+
+class _ProductItemsState extends State<ProductItems> {
+  @override
+  var rate = 0.0;
+
   Widget build(BuildContext context) {
     return Container(
 
@@ -250,32 +265,36 @@ class ProductItems extends StatelessWidget {
                 ExtraSpace(height: 10,),
                 SmoothStarRating(
                     allowHalfRating: false,
-                    onRated: (v) {
+                    rating: rate,
+                    onRated: (value) {
+                      print(rate);
+                      setState(() {
+                        rate=value;
+
+                      });
                     },
                     starCount: 5,
-                    rating: rating,
+
                     size: 25.0,
-                    isReadOnly:true,
-                    filledIconData: Icons.blur_off,
-                    halfFilledIconData: Icons.blur_on,
+                    isReadOnly: false,
+                    filledIconData: Icons.star,
                     color: Colors.black,
                     borderColor: Colors.black,
-                    spacing:0.0
-                ),
+                    spacing: 0.0),
                 ExtraSpace(height: 9,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text('أمثلة من مشاريعنا',
                       style: TextStyle(
-                          color: Color(0xff12BBAE),fontSize: 15),
+                          color: Color(0xff12BBAE),fontSize: 13),
                       textAlign: TextAlign.center,
                     ),
                     Container(color: Colors.black, height: 20 , width: 2,),
 
                     Text('طلب عرض سعر',
                       style: TextStyle(
-                          color: Color(0xff12BBAE),fontSize: 15),
+                          color: Color(0xff12BBAE),fontSize: 13),
                       textAlign: TextAlign.center,
                     ),
                   ],

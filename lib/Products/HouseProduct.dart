@@ -6,6 +6,22 @@ import 'package:tobaapp/Constant/ExtraSpace.dart';
 import 'package:tobaapp/Constant/Images1.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
 import 'package:tobaapp/UI/AppScreens/AlMukatibScreen3.dart';
+import 'package:tobaapp/UI/AppScreens/AlMukatibScreen4.dart';
+import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
+import 'package:tobaapp/UI/AppScreens/screen22.dart';
+import 'package:tobaapp/UI/AppScreens/screen23.dart';
+import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
+import 'package:tobaapp/Widgets/mediaquery.dart';
+import 'package:tobaapp/Constant/Images.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:tobaapp/Constant/Colors.dart';
+import 'package:tobaapp/Constant/ExtraSpace.dart';
+import 'package:tobaapp/Constant/Images1.dart';
+import 'package:tobaapp/SearchContent/Search.dart';
+import 'package:tobaapp/UI/AppScreens/AlMukatibScreen3.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
@@ -112,7 +128,7 @@ class _HouseProductState extends State<HouseProduct> {
             children: [
               Container(
                 height: 40,
-                width: 90,
+                width: 100,
                 // decoration: BoxDecoration(
                 //     border: Border.all(
                 //       color: MyColors.ThemeColor2,
@@ -124,7 +140,7 @@ class _HouseProductState extends State<HouseProduct> {
                   label:Text(
                     'الفلتر',
                     style: TextStyle(
-                        color: Colors.white,fontSize: 15),
+                        color: Colors.white,fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
 
                   color: MyColors.ThemeColor2,
@@ -148,7 +164,7 @@ class _HouseProductState extends State<HouseProduct> {
               Container(
 
                 child: Text('مقاولي البناء ( تسليم مفتاح )',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17)
+                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17, fontFamily: "SegoeUIBold")
                   //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),
@@ -178,14 +194,14 @@ class _HouseProductState extends State<HouseProduct> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) =>AlMukatibScreen3()
-                   ),
+                    ),
                   );
 
                 },
                 child: Text(
                   'طلب عرض من المقاولين',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20),
+                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20, fontFamily: "SegoeUIBold"),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -194,24 +210,44 @@ class _HouseProductState extends State<HouseProduct> {
           ExtraSpace(
             height: 20,
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: 3,
-            primary: true,
-            itemBuilder: (context, index){
-              return ProductItems();
-            },
+
+          GestureDetector(
+              onTap:()=> Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AlMukatibScreen4(),),
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              primary: true,
+              itemBuilder: (context, index){
+                return ProductItems();
+              },
+            ),
+
           ),
+
+
+
+
+
+
         ],
       ),
     );
   }
 }
 
-class ProductItems extends StatelessWidget {
+class ProductItems extends StatefulWidget {
   @override
-  var rating = 0.0;
+  _ProductItemsState createState() => _ProductItemsState();
+}
+
+class _ProductItemsState extends State<ProductItems> {
+  @override
+  var rate = 0.0;
+
   Widget build(BuildContext context) {
     return Container(
 
@@ -252,25 +288,29 @@ class ProductItems extends StatelessWidget {
                 ExtraSpace(height: 6,),
                 SmoothStarRating(
                     allowHalfRating: false,
-                    onRated: (v) {
+                    rating: rate,
+                    onRated: (value) {
+                      print(rate);
+                      setState(() {
+                        rate=value;
+
+                      });
                     },
                     starCount: 5,
-                    rating: rating,
+
                     size: 25.0,
-                    isReadOnly:true,
-                    filledIconData: Icons.blur_off,
-                    halfFilledIconData: Icons.blur_on,
+                    isReadOnly: false,
+                    filledIconData: Icons.star,
                     color: Colors.black,
                     borderColor: Colors.black,
-                    spacing:0.0
-                ),
+                    spacing: 0.0),
                 ExtraSpace(height: 10,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text('مشاريع من تنفيذنا',
                       style: TextStyle(
-                          color: Color(0xff12BBAE),fontSize: 15),
+                          color: Color(0xff12BBAE),fontSize: 13),
                       textAlign: TextAlign.center,
                     ),
                     Container(color: Colors.black, height: 20 , width: 2,
@@ -283,7 +323,7 @@ class ProductItems extends StatelessWidget {
 
                     Text('طلب عرض سعر',
                       style: TextStyle(
-                          color: Color(0xff12BBAE),fontSize: 15),
+                          color: Color(0xff12BBAE),fontSize: 13),
                       textAlign: TextAlign.center,
                     ),
                   ],

@@ -53,7 +53,7 @@ class _displayProductState extends State<displayProduct> {
         brightness: Brightness.dark,
       ),
 
-     // bottomNavigationBar: BottomNavigationBarClass(),
+      // bottomNavigationBar: BottomNavigationBarClass(),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Container(
@@ -109,8 +109,8 @@ class _displayProductState extends State<displayProduct> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                height: 40,
-                width: 90,
+                height: 45,
+                width: 100,
                 // decoration: BoxDecoration(
                 //     border: Border.all(
                 //       color: MyColors.ThemeColor2,
@@ -122,7 +122,7 @@ class _displayProductState extends State<displayProduct> {
                   label:Text(
                     'الفلتر',
                     style: TextStyle(
-                        color: Colors.white,fontSize: 15),
+                        color: Colors.white,fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
 
                   color: MyColors.ThemeColor2,
@@ -143,7 +143,7 @@ class _displayProductState extends State<displayProduct> {
                 ),
               ),
               Text('المكاتب الهندسية والإستشارية',
-                  style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17)
+                  style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17, fontFamily: "SegoeUIBold")
                 //TextStyle: Colors.grey.shade400,FontWeight.bold,
               ),
 
@@ -188,7 +188,7 @@ class _displayProductState extends State<displayProduct> {
                 child: Text(
                   'طلب عرض من المكاتب',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20),
+                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20, fontFamily: "SegoeUIBold"),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -197,32 +197,38 @@ class _displayProductState extends State<displayProduct> {
           ExtraSpace(
             height: 20,
           ),
-             GestureDetector(
-               onTap:()=> Navigator.push(
-                 context,
-                 MaterialPageRoute(builder: (context) =>AlMukatib()),
-               ),
-               child: ListView.builder(
-                 shrinkWrap: true,
-                 physics: NeverScrollableScrollPhysics(),
-                 itemCount: 3,
-                 primary: true,
-                 itemBuilder: (context, index){
-                   return ProductItems();
+          GestureDetector(
+            onTap:()=> Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>AlMukatib()),
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              primary: true,
+              itemBuilder: (context, index){
+                return ProductItems();
 
 
-                 },
-               ),
-             ),
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class ProductItems extends StatelessWidget {
+class ProductItems extends StatefulWidget {
   @override
-  var rating = 0.0;
+  _ProductItemsState createState() => _ProductItemsState();
+}
+
+class _ProductItemsState extends State<ProductItems> {
+  @override
+  var rate = 0.0;
+
   Widget build(BuildContext context) {
     return Container(
 
@@ -243,8 +249,8 @@ class ProductItems extends StatelessWidget {
               displayimage,
               fit: BoxFit.cover,
               height: 154,
-             ),
-          flex: 4,
+            ),
+            flex: 4,
           ),
           Expanded(
             child:Column(
@@ -258,24 +264,28 @@ class ProductItems extends StatelessWidget {
                 ExtraSpace(height: 10,),
                 Text('استشارات - تصميم - إعتمادات - تنفيذ وإشراف',
                   style: TextStyle(
-                       color: Colors.black,fontSize: 11),
+                      color: Colors.black,fontSize: 11),
                   textAlign: TextAlign.center,
                 ),
                 ExtraSpace(height: 10,),
                 SmoothStarRating(
                     allowHalfRating: false,
-                    onRated: (v) {
+                    rating: rate,
+                    onRated: (value) {
+                      print(rate);
+                      setState(() {
+                        rate=value;
+
+                      });
                     },
                     starCount: 5,
-                    rating: rating,
+
                     size: 25.0,
-                    isReadOnly:true,
-                    filledIconData: Icons.blur_off,
-                    halfFilledIconData: Icons.blur_on,
-                    color: Colors.green,
-                    borderColor: Colors.green,
-                    spacing:0.0
-                ),
+                    isReadOnly: false,
+                    filledIconData: Icons.star,
+                    color: Colors.black,
+                    borderColor: Colors.black,
+                    spacing: 0.0),
                 ExtraSpace(height: 12,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -7,7 +7,10 @@ import 'package:tobaapp/Constant/Images1.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
 import 'package:tobaapp/UI/AppScreens/AlMukatibScreen2.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
-import 'package:tobaapp/UI/AppScreens/screen25.dart';
+import 'package:tobaapp/UI/AppScreens/screen21.dart';
+import 'package:tobaapp/UI/AppScreens/screen22.dart';
+import 'package:tobaapp/UI/AppScreens/screen24.dart';
+//import 'package:tobaapp/UI/AppScreens/screen25.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
@@ -109,8 +112,8 @@ class _MenProductState extends State<MenProduct> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                height: 40,
-                width: 90,
+                height: 45,
+                width: 100,
                 // decoration: BoxDecoration(
                 //     border: Border.all(
                 //       color: MyColors.ThemeColor2,
@@ -122,7 +125,7 @@ class _MenProductState extends State<MenProduct> {
                   label:Text(
                     'الفلتر',
                     style: TextStyle(
-                        color: Colors.white,fontSize: 15),
+                        color: Colors.white,fontSize: 15,fontFamily: "SegoeUIRegular"),
                   ),
 
                   color: MyColors.ThemeColor2,
@@ -146,7 +149,7 @@ class _MenProductState extends State<MenProduct> {
               Container(
 
                 child: Text('المهندسون والمستشارون',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17)
+                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17, fontFamily: "SegoeUIBold")
                   //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),
@@ -176,14 +179,14 @@ class _MenProductState extends State<MenProduct> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) =>AlMukatibScreen2()
-                   ),
+                    ),
                   );
 
                 },
                 child: Text(
                   'طلب عرض من المهندسين',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20),
+                      fontWeight: FontWeight.bold, color: Colors.white,fontSize: 20,fontFamily: "SegoeUIRegular"),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -193,10 +196,10 @@ class _MenProductState extends State<MenProduct> {
             height: 20,
           ),
           GestureDetector(
-             onTap:()=> Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ScreenNo25(),),
-        ),
+            onTap:()=> Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ScreenNo21(),),
+            ),
             child: ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -213,9 +216,15 @@ class _MenProductState extends State<MenProduct> {
   }
 }
 
-class ProductItems extends StatelessWidget {
+class ProductItems extends StatefulWidget {
   @override
-  var rating = 0.0;
+  _ProductItemsState createState() => _ProductItemsState();
+}
+
+class _ProductItemsState extends State<ProductItems> {
+  @override
+  var rate = 0.0;
+
   Widget build(BuildContext context) {
     return Container(
 
@@ -256,18 +265,23 @@ class ProductItems extends StatelessWidget {
                 ExtraSpace(height: 10,),
                 SmoothStarRating(
                     allowHalfRating: false,
-                    onRated: (v) {
+                    rating: rate,
+                    onRated: (value) {
+                      print(rate);
+                      setState(() {
+                        rate=value;
+
+                      });
                     },
                     starCount: 5,
-                    rating: rating,
+
                     size: 25.0,
-                    isReadOnly:true,
-                    filledIconData: Icons.blur_off,
-                    halfFilledIconData: Icons.blur_on,
+                    isReadOnly: false,
+                    filledIconData: Icons.star,
                     color: Colors.black,
                     borderColor: Colors.black,
-                    spacing:0.0
-                ),
+                    spacing: 0.0),
+
                 ExtraSpace(height: 12,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

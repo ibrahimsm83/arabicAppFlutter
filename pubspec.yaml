@@ -30,6 +30,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   smooth_star_rating: 1.1.1
+  auto_size_text: ^2.1.0
+  flutter_rating_bar: ^3.2.0+1
 
 dev_dependencies:
   flutter_test:
@@ -50,8 +52,14 @@ flutter:
     - family: CairoRegular
       fonts:
         - asset: fonts/Cairo_Regular.ttf
-  uses-material-design: true
+    - family: SegoeUIRegular
+      fonts:
+        - asset: fonts/Segoe_UI.ttf
+    - family: SegoeUIBold
+      fonts:
+        - asset: fonts/Segoe_UI_Bold.ttf
 
+  uses-material-design: true
   assets:
     - assets/
     - assets/images/logo1.png
@@ -80,9 +88,13 @@ flutter:
     - assets/images/cementlogo.png
     - assets/images/men.png
     - assets/images/cementtoba.png
+    - assets/images/fb_icon.png
+    - assets/images/icon_material_chat.png
+    - assets/images/icon-awesome_eye.png
+    - assets/images/awesome-facebook-f.png
+    - assets/images/awesome-google.png
 
-
-#  fonts:
+  #  fonts:
 #    - family: CairoBold
 #      fonts:
 #        - asset: fonts/Cairo_Bold.ttf

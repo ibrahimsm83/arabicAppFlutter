@@ -5,6 +5,7 @@ import 'package:tobaapp/Constant/ExtraSpace.dart';
 import 'package:tobaapp/Constant/Images1.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
+import 'package:tobaapp/UI/AppScreens/screen24.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
@@ -32,13 +33,13 @@ class _VillasProductState extends State<VillasProduct> {
         title: SearchbyTextField(),
         actions: <Widget>[
           //IconButton
-       //IconButton
+          //IconButton
         ], //<Widget>[]
         backgroundColor: Colors.white,
         elevation: 50.0,
         leading: IconButton(
           icon: Icon(Icons.message,color: MyColors.ThemeColor2,
-          size: 30,),
+            size: 30,),
           tooltip: 'Comment Icon',
           onPressed: () {
 
@@ -120,7 +121,7 @@ class _VillasProductState extends State<VillasProduct> {
                   ),
                   label: Text(
                     'الفلتر',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
                   color: MyColors.ThemeColor2,
                   shape: RoundedRectangleBorder(
@@ -143,7 +144,7 @@ class _VillasProductState extends State<VillasProduct> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17)
+                        fontSize: 17, fontFamily: "SegoeUIBold")
                   //TextStyle: Colors.grey.shade400,FontWeight.bold,
                 ),
               ),
@@ -166,7 +167,14 @@ class _VillasProductState extends State<VillasProduct> {
           ExtraSpace(
             height: 20,
           ),
-          ListView.builder(
+
+          GestureDetector(
+            onTap:()=> Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>ScreenNo24()),
+            ),
+
+            child:ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: 3,
@@ -174,6 +182,7 @@ class _VillasProductState extends State<VillasProduct> {
             itemBuilder: (context, index) {
               return ProductItems();
             },
+          ),
           ),
         ],
       ),
@@ -201,9 +210,9 @@ class ProductItems extends StatelessWidget {
         children: [
           Expanded(
             child: Image.asset(
-              villas,
-              fit: BoxFit.fill
-              ),
+                villas,
+                fit: BoxFit.fill
+            ),
             flex: 6,
           ),
           Expanded(
@@ -226,9 +235,9 @@ class ProductItems extends StatelessWidget {
                     Text(
                       'مجمع النرجس',
                       style: TextStyle(fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 20),
-                     textAlign: TextAlign.right,
+                          color: Colors.black,
+                          fontSize: 20),
+                      textAlign: TextAlign.right,
                     ),
 
                   ],
@@ -352,7 +361,7 @@ class ButtonsForTop extends StatelessWidget {
       child: RaisedButton(
         child: Text(
           this.Texting,
-          style: TextStyle(color: Colors.white, fontSize: 15),
+          style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
         ),
         color: MyColors.ThemeColor2,
         shape: RoundedRectangleBorder(
@@ -421,6 +430,7 @@ class SearchbyTextField extends StatelessWidget {
         hintStyle: TextStyle(
           color: Colors.grey.shade400,
           fontWeight: FontWeight.bold,
+          fontFamily: "SegoeUIBold"
         ),
         suffixIcon: Icon(
           Icons.search,

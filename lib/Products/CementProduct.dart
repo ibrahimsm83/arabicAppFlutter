@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:tobaapp/Constant/Colors.dart';
 import 'package:tobaapp/Constant/ExtraSpace.dart';
 import 'package:tobaapp/Constant/Images1.dart';
+import 'package:tobaapp/Products/CementProductSale.dart';
 import 'package:tobaapp/SearchContent/Search.dart';
 import 'package:tobaapp/UI/AppScreens/MarkazMusayda.dart';
 import 'package:tobaapp/Widgets/bottomNavigationBar.dart';
 import 'package:tobaapp/Widgets/mediaquery.dart';
 import 'package:tobaapp/Constant/Images.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+
 
 
 class CementProduct extends StatefulWidget {
@@ -29,7 +31,7 @@ class _CementProductState extends State<CementProduct> {
     ScreenUtil screenUtil = ScreenUtil();
     return Scaffold(
       appBar: AppBar(
-        title: SearchbyTextField(),
+        title: SearchbyTextField(hintText: 'بحث عن مكتب إستشارات هندسية',),
         actions: <Widget>[
           //IconButton
           //IconButton
@@ -99,19 +101,13 @@ class _CementProductState extends State<CementProduct> {
 
       body: ListView(
         children: [
-          ExtraSpace(height: 10,),
+          ExtraSpace(height: 12,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
                 height: 40,
-                width: 90,
-                // decoration: BoxDecoration(
-                //     border: Border.all(
-                //       color: MyColors.ThemeColor2,
-                //     ),
-                //     borderRadius: BorderRadius.all(Radius.circular(20))
-                // ),
+                width: 100,
                 child: RaisedButton.icon(
                   icon: Icon(
                     Icons.wrap_text,
@@ -119,7 +115,7 @@ class _CementProductState extends State<CementProduct> {
                   ),
                   label: Text(
                     'الفلتر',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
                   color: MyColors.ThemeColor2,
                   shape: RoundedRectangleBorder(
@@ -142,29 +138,38 @@ class _CementProductState extends State<CementProduct> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17)
-                    //TextStyle: Colors.grey.shade400,FontWeight.bold,
-                    ),
+                        fontSize: 17, fontFamily: "SegoeUIBold")
+                  //TextStyle: Colors.grey.shade400,FontWeight.bold,
+                ),
               ),
             ],
           ),
           ExtraSpace(
-            height: 40,
+            height: 30,
           ),
           Center(
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ButtonsForTop(Texting: 'المواسير',),
-              ButtonsForTop(Texting: 'الإسمنت',),
-              ButtonsForTop(Texting: 'الخرسان',),
-              ButtonsForTop(Texting: 'البلك',),
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ButtonsForTop(Texting: 'المواسير',),
+                  ButtonsForTop(Texting: 'الإسمنت',),
+                  ButtonsForTop(Texting: 'الخرسان',),
+                  ButtonsForTop(Texting: 'البلك',),
+                ],
+              )),
           ExtraSpace(
             height: 20,
           ),
-          ListView.builder(
+
+
+          GestureDetector(
+
+            onTap:()=> Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>CementProductSale()),
+          ),
+
+            child:ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: 3,
@@ -172,16 +177,27 @@ class _CementProductState extends State<CementProduct> {
             itemBuilder: (context, index) {
               return ProductItems();
             },
-          ),
+
+
+
+          ),),
+
+
+
         ],
       ),
     );
   }
 }
 
-class ProductItems extends StatelessWidget {
+class ProductItems extends StatefulWidget {
   @override
-  var rating = 0.0;
+  _ProductItemsState createState() => _ProductItemsState();
+}
+
+class _ProductItemsState extends State<ProductItems> {
+  @override
+  var rate = 3.0;
 
   Widget build(BuildContext context) {
     return Container(
@@ -235,17 +251,23 @@ class ProductItems extends StatelessWidget {
                     ),
                   ],
                 ),
-              Quantity()
+                Quantity()
                 ,
                 SmoothStarRating(
                     allowHalfRating: false,
-                    onRated: (v) {},
+                    rating: rate,
+                    onRated: (value) {
+                      print(rate);
+                      setState(() {
+                        rate=value;
+
+                      });
+                    },
                     starCount: 5,
-                    rating: rating,
+
                     size: 25.0,
-                    isReadOnly: true,
-                    filledIconData: Icons.blur_off,
-                    halfFilledIconData: Icons.blur_on,
+                    isReadOnly: false,
+                    filledIconData: Icons.star,
                     color: Colors.black,
                     borderColor: Colors.black,
                     spacing: 0.0),
@@ -294,11 +316,11 @@ class ButtonsForTop extends StatelessWidget {
     return Container(
       height: 30,
       width: 70,
-      margin: EdgeInsets.fromLTRB(5, 0, 5, 5),
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: RaisedButton(
         child: Text(
           this.Texting,
-          style: TextStyle(color: Colors.white, fontSize: 15),
+          style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
         ),
         color: MyColors.ThemeColor2,
         shape: RoundedRectangleBorder(
@@ -309,9 +331,34 @@ class ButtonsForTop extends StatelessWidget {
     );
   }
 }
-class Quantity extends StatelessWidget {
+
+class Quantity extends StatefulWidget {
   @override
+  _QuantityState createState() => _QuantityState();
+}
+
+
+class _QuantityState extends State<Quantity> {
+  @override
+  int value=1;
+  void Addition(){
+    setState(() {
+      if(value>0){
+
+        value++;}
+    });
+
+  }
+  void Subtraction(){
+    setState(() {
+      if(value>1){
+        value--;
+      }
+
+    });
+  }
   Widget build(BuildContext context) {
+    print(value);
     return Row(
       children: [
         ExtraSpace(
@@ -319,15 +366,23 @@ class Quantity extends StatelessWidget {
         ),
         Column(
           children: [
-            Image.asset(
-              angleup,
+
+
+            GestureDetector(
+
+              onTap: Addition,
+              child: Image.asset(
+                angleup,
+
+
+              ),
             ),
             ExtraSpace(
-              height: 5,
+              height: 6,
             ),
             Container(
-              width: 30,
-              height: 30,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: MyColors.ThemeColor2,
@@ -336,16 +391,20 @@ class Quantity extends StatelessWidget {
                 ],
               ),
               child: Text(
-                '1',
+                value.toString(),
                 style: TextStyle(fontSize: 25, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ),
             ExtraSpace(
-              height: 5,
+              height: 6,
             ),
-            Image.asset(
-              angledown,
+            GestureDetector(
+              onTap: Subtraction,
+              child: Image.asset(
+                angledown,
+
+              ),
             ),
           ],
         ),
@@ -353,3 +412,4 @@ class Quantity extends StatelessWidget {
     );
   }
 }
+

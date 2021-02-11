@@ -118,7 +118,7 @@ class _CementSellingState extends State<CementSelling> {
                   ),
                   label: Text(
                     'الفلتر',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: "SegoeUIBold"),
                   ),
                   color: MyColors.ThemeColor2,
                   shape: RoundedRectangleBorder(
